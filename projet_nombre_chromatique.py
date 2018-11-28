@@ -115,8 +115,6 @@ class Graph:
                     print('Noeud', i,"du graphe trié déjà colorié\n")
             # On augmente le nombre chromatique car on a parcouru la liste en entier
             self.chromatic_number+=1
-        
-        print(self._colors)
 
         print('____________________')
         copy_color = self._colors.copy()
@@ -124,8 +122,6 @@ class Graph:
   
         temp = [0] * len(copy_color); 
   
-        # arr[i] should be 
-            # present at index[i] index 
         for i in range(0,len(copy_color)): 
             temp[copy_index[i]] = copy_color[i]
       
@@ -155,14 +151,7 @@ def changeGraph(text):
     text_box = TextBox(axbox, 'Input', initial=text)
     ax1 = fig.add_subplot(111)
 
-
-    #self._graph = test
-    #print(test)
-
     allInOne(test,text_box,ax1)
-
-    #except Exception as e:
-     #   print("\nERROR: ",e)
         
 def convert(in_str):
     result = []
@@ -193,9 +182,7 @@ def edges_lists_to_matrix(text):
     return matrix  
 
 def allInOne(graph,text_box,ax1):
-
-   
-
+  
     # Création de l'instance graphe
     G = Graph(graph)
 
@@ -207,9 +194,7 @@ def allInOne(graph,text_box,ax1):
         , key=lambda k : G._degrees[k], reverse=True)
 
     print(G._graph)
-    #exit()
-    # Création du graphe trié et du tableau d'indice trié,
-    # en fonction des degrées (décroissant)
+    
     G.order_by_degree()
 
     print("\n\nTableau d'index du graphe trié: \n",G._sorted_graph_index)
@@ -235,8 +220,6 @@ def allInOne(graph,text_box,ax1):
     print(G2.edges())
 
     pos = nx.spring_layout(G2, iterations=50) 
-
-
     nx.draw(G2, pos=pos, node_color=G._color_lemma_list, with_labels=True, ax=ax1)
 
     text_box.on_submit(changeGraph)
@@ -251,21 +234,9 @@ def allInOne(graph,text_box,ax1):
 ###         - Fin quand tout les noeuds sont colorés
 
 if __name__ == '__main__':
-    '''_graph = [[0,1,0,1],
-                [1,0,1,0],
-                [0,1,0,1],
-                [1,0,1,0]]
-    '''   
 
     _color_list = ['blue', 'red', 'yellow', 'green','purple']
-    '''_graph = [[0,1,0,1,1],
-            [1,0,1,0,0],
-            [0,1,0,1,0],
-            [1,0,1,0,1],
-            [1,0,0,1,0]]
-'''
-
-    #pyplot.show()
+    
     #changeGraph('(0, 1),(1, 2)')
     #changeGraph('(0, 1),(1, 2),(2,3)')
     changeGraph('(0, 1),(0, 3),(0, 4),(1, 2),(2, 3),(3, 4)')
